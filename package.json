@@ -1,0 +1,22 @@
+{
+    "private": true,
+    "dependencies": {
+        "@theia/go": "next",
+        "@theia/messages": "next",
+        "@theia/navigator": "next",
+        "@theia/terminal": "next",
+        "@theia/outline-view": "next",
+        "@theia/preferences": "next",
+        "@theia/git": "next",
+        "@theia/file-search": "next",
+        "@theia/markers": "next",
+        "@theia/search-in-workspace": "next",
+        "@theia/json": "next",
+        "@theia/textmate-grammars": "next",
+		"@theia/yaml": "next",
+		"@theia/core": "next"
+    },
+    "devDependencies": {
+        "@theia/cli": "latest"
+    }
+}

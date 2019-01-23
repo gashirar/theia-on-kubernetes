@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: theia-deployment
+spec:
+  selector:
+    matchLabels:
+      app: theia
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: theia
+    spec:
+      containers:
+      - name: theia
+        image: gashirar/theia-kubernetes:latest
+        ports:
+        - containerPort: 3000
+        securityContext:
+          privileged: true
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: theia-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: theia
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+
