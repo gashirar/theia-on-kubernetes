@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: theia-deployment
+  name: theia
 spec:
   selector:
     matchLabels:
@@ -12,6 +12,8 @@ spec:
       labels:
         app: theia
     spec:
+      serviceAccountName: theia
+      automountServiceAccountToken: true
       containers:
       - name: theia
         image: gashirar/theia-kubernetes:latest
@@ -23,13 +25,43 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: theia-service
+  name: theia
 spec:
   type: LoadBalancer
+#  loadBalancerSourceRanges:
+#  - <ADD YOUR IP ADDRESS>
   selector:
     app: theia
   ports:
   - protocol: TCP
     port: 80
     targetPort: 3000
-
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: theia
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - '*'
+  verbs:
+  - '*'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: theia
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: theia
+subjects:
+- kind: ServiceAccount
+  name: theia
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: theia
