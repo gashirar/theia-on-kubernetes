@@ -43,7 +43,7 @@ metadata:
   name: theia
 rules:
 - apiGroups:
-  - ""
+  - "*"
   resources:
   - '*'
   verbs:
