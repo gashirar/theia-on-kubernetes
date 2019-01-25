@@ -135,16 +135,15 @@ RUN chmod g+rw /home && \
 RUN apt-get update && apt-get install -y python build-essential
 
 USER theia
-ARG version=latest
 WORKDIR /home/theia
 ADD ./package.json ./package.json
-ARG GITHUB_TOKEN
 RUN yarn --cache-folder ./ycache && rm -rf ./ycache
 # using "NODE_OPTIONS=..." to avoid out-of-memory problem in CI
 RUN NODE_OPTIONS="--max_old_space_size=4096" yarn theia build
 EXPOSE 3000
 ENV SHELL /bin/bash
 
+ADD ./server.js ./src-gen/backend/server.js
 RUN echo "source <(kubectl completion bash)\n" >> ~/.bashrc
 
 CMD [ "yarn", "theia", "start", "/home/project", "--hostname=0.0.0.0" ]
