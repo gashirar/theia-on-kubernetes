@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: theia-{{ .Values.user }}
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- end }}
+spec:
+  selector:
+    matchLabels:
+      app: theia-{{ .Values.user }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: theia-{{ .Values.user }}
+    spec:
+      serviceAccountName: theia
+      automountServiceAccountToken: true
+      containers:
+      - name: theia
+        image: gashirar/theia-kubernetes:latest
+        ports:
+        - containerPort: 3000
+        securityContext:
+          privileged: true
+        env:
+        - name: USER
+          value: {{ .Values.user }}
+

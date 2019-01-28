@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: theia-{{ .Values.user }}
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- end }}
+spec:
+  type: LoadBalancer
+  {{- if .Values.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+    {{- toYaml .Values.loadBalancerSourceRanges | nindent 4 }}
+  {{- end }}
+  selector:
+    app: theia-{{ .Values.user }}
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+

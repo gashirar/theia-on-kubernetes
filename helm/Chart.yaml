@@ -1,0 +1,9 @@
+name: theia-kubernetes
+description: A Web-IDE for Kubernetes
+version: 0.1.0
+kubeVersion: ">=1.11.0"
+keyword:
+  - theia
+home: https://github.com/gashirar/theia-kubernetes
+maitainers:
+  - name: gashirar
