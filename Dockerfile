@@ -118,6 +118,13 @@ RUN curl -L https://github.com/kubernetes-sigs/kustomize/releases/download/v1.0.
     chmod +x ./kustomize && \
     mv ./kustomize /usr/local/bin/kustomize
 
+# kubectx/kubens/fzf
+RUN git clone https://github.com/ahmetb/kubectx /opt/kubectx && \
+    ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx && \
+    ln -s /opt/kubectx/kubens /usr/local/bin/kubens && \
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
+    ~/.fzf/install
+
 ## User account
 RUN adduser --disabled-password --gecos '' theia && \
     adduser theia sudo && \
