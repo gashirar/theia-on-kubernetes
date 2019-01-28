@@ -3,7 +3,9 @@
 Theia is a cloud & desktop IDE framework implemented in TypeScript. http://theia-ide.org
 
 Basic Authentication default user/password is `user`/`P@ssw0rd`.  
-You can overwrite user/password by environment variables.(`USER`/`PASSWORD`)
+You can overwrite user/password by environment variables.(`USER`/`PASSWORD`)  
+
+If basic authentication is not used, set the environment variable `NO_AUTH=true.`
 
 ## How to use `theia-kubernetes` image?
 
