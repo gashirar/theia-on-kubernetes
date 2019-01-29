@@ -1,6 +1,0 @@
-# Default Values
-
-namespace: theia-ide
-user: user
-loadBalancerSourceRanges: []
-

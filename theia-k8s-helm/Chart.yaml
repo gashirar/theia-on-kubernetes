@@ -1,4 +1,4 @@
-name: theia-kubernetes
+name: theia-k8s-helm
 description: A Web-IDE for Kubernetes
 version: 0.1.0
 kubeVersion: ">=1.11.0"

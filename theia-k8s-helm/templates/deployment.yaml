@@ -26,5 +26,12 @@ spec:
           privileged: true
         env:
         - name: USER
-          value: {{ .Values.user }}
-
+          valueFrom:
+            secretKeyRef:
+              name: theia-{{ .Values.user }}
+              key: user
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: theia-{{ .Values.user }}
+              key: password

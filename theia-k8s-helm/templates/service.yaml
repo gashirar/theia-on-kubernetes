@@ -2,15 +2,14 @@ kind: Service
 apiVersion: v1
 metadata:
   name: theia-{{ .Values.user }}
-  {{- if .Values.namespace }}
   namespace: {{ .Values.namespace }}
-  {{- end }}
 spec:
   type: LoadBalancer
-  {{- if .Values.loadBalancerSourceRanges }}
-  loadBalancerSourceRanges:
-    {{- toYaml .Values.loadBalancerSourceRanges | nindent 4 }}
+  {{- if empty .Values.loadBalancerSourceRanges }}
+  {{- fail "A valid .Values.loadBalancerSourceRanges entry required!" }}
   {{- end }}
+  loadBalancerSourceRanges:
+  {{- toYaml .Values.loadBalancerSourceRanges | nindent 2 -}}
   selector:
     app: theia-{{ .Values.user }}
   ports:
