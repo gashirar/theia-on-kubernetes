@@ -18,7 +18,7 @@ docker run -it -p 3000:3000 -v "$(pwd):/home/project:cached" gashirar/theia-kube
 
 ### k8s cluster
 
-Apply yaml!
+Apply Helm Chart!
 ```
-kubectl apply -f theia.yaml
+helm template . --set user=<YOURNAME> --set password=<YOURPASSWORD> --set namespace=<YOURNAMESPACE> --set loadBalancerSourceRanges={0.0.0.0/0} | kubectl apply -f -
 ```
