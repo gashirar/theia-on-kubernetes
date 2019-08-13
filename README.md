@@ -1,5 +1,7 @@
 # Theia Kubernetes
 
+__New! -> https://github.com/gashirar/code-server-on-kubernetes__
+
 Theia is a cloud & desktop IDE framework implemented in TypeScript. http://theia-ide.org
 
 Basic Authentication default user/password is `user`/`P@ssw0rd`.  
