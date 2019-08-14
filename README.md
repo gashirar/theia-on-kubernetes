@@ -1,4 +1,4 @@
-# Theia Kubernetes
+# Theia on Kubernetes
 
 __New! -> https://github.com/gashirar/code-server-on-kubernetes__
 
